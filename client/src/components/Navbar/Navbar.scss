@@ -1,0 +1,48 @@
+$lightGreen: #b9e7e7;
+.navbar {
+  .container {
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+
+    .link {
+      color: inherit;
+      text-decoration: none;
+
+      h6 {
+        font-size: 16px;
+        font-weight: 300;
+      }
+      span {
+        cursor: pointer;
+
+      }
+      
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .write-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $lightGreen;
+        width: 60px;
+        height: 30px;
+        // border-radius: 50%;
+        border: 1px solid white;
+        color: white;
+        &:hover {
+          color: gray;
+          background-color: white;
+          border: 1px solid $lightGreen;
+        }
+      }
+    }
+  }
+}

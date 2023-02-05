@@ -1,0 +1,41 @@
+$lightGreen: #b9e7e7;
+.menu {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  h1 {
+    font-size: 20px;
+    color: #555;
+  }
+
+  .post {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .read-more-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      width: 90px;
+      height: 35px;
+      // border-radius: 50%;
+      border: 1px solid $lightGreen;
+      color: teal;
+      &:hover {
+        color: gray;
+        background-color: white;
+        border: 1px solid $lightGreen;
+      }
+    }
+  }
+}
