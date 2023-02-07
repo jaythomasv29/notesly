@@ -1,7 +1,8 @@
 $lightGreen: #b9e7e7;
 .navbar {
+  padding: 0px 40px;
   .container {
-    padding: 10px 0px;
+    // padding: 10px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -32,7 +33,7 @@ $lightGreen: #b9e7e7;
         align-items: center;
         justify-content: center;
         background-color: $lightGreen;
-        width: 60px;
+        width: 50px;
         height: 30px;
         // border-radius: 50%;
         border: 1px solid white;

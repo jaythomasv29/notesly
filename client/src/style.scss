@@ -10,9 +10,11 @@ $lightGreen: #b9e7e7;
 .app {
   display: flex;
   justify-content: center;
+  
 
   .container {
-    width: 1024px;
+    width: 100%;
+    padding: 40px;
     // LOGIN & REGISTER
     .auth {
       display: flex;
