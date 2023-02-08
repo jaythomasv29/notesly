@@ -43,7 +43,10 @@ const login = (req, res) => {
     const { password, ...otherUserDetails } = data[0];
     console.log(token);
     res
-      .cookie("access_token", token, { httpOnly: true })
+      .cookie("access_token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+      })
       .status(200)
       .json(otherUserDetails);
   });

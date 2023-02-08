@@ -1,7 +1,6 @@
 import React, { useState } from "react"
-import "./Post.scss";
-import { Link, useParams } from "react-router-dom"
-
+import ReactQuill from "react-quill";
+import { Link, useNavigate, useParams } from "react-router-dom"
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import Menu from "../components/Menu/Menu";
@@ -10,21 +9,25 @@ import axios from "axios";
 import moment from "moment"
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
+import "./Post.scss";
+import 'react-quill/dist/quill.snow.css';
+
 
 export const Post = () => {
+
+ const modules = {toolbar: false};
+  const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
   const { id } = useParams();
 
   const [post, setPost] = useState({});
 
-  const calculateDaysFromPresent = date => {
-    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    const today = new Date();
-    const publishedDate = new Date(date);
-    return (Math.round(Math.abs(today - publishedDate) / oneDay));
 
+  const handleDeletePost = async (id) => {
+    await axios.delete(`/posts/${id}`)
+    navigate("/");
+    
   }
-  calculateDaysFromPresent(post.date)
 
   console.log(post);
   useEffect(() => {
@@ -41,36 +44,36 @@ export const Post = () => {
   return (
     <div className="post">
       <div className="content">
-        <img src={post.img} />
+        <img src={`../uploads/${post.post_img}`} />
         <div className="user">
           <img src={post?.user_img || "https://images.pexels.com/photos/12509454/pexels-photo-12509454.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} />
           <div className="info">
-            <span>{post.username}</span>
-            <p>Posted {moment(post.date).startOf("hour").fromNow()}</p>
+            <span>{post?.email}</span>
+            <p>Posted {moment(post?.date).startOf("hour").fromNow()}</p>
           </div>
           {
-            currentUser.username === post.username &&
+            currentUser?.email === post?.email &&
             <div className="controls">
               <div className="circle edit">
-                <Link className="link" to={`write?edit=2`}>
+                <Link className="link" to={`/write?edit=${post.id}`} state={post}>
                   <ModeEditIcon />
                 </Link>
 
               </div>
               <div className="circle delete">
-                <Link to={`/`}>
-                  <HighlightOffIcon />
-                </Link>
+                
+                  <HighlightOffIcon onClick={() => handleDeletePost(post.id)}/>
+                
               </div>
             </div>
           }
         </div>
         <h1>{post?.title}</h1>
-        <p>{post?.desc}</p>
+        <ReactQuill value={post?.desc} modules={modules} />
 
 
       </div>
-      <Menu />
+      <Menu category={post.category} ignoreId={post.id}/>
     </div>
   )
 }

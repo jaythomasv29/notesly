@@ -3,6 +3,7 @@
   text-decoration: none;
 }
 .home {
+  padding: 40px;
   .posts {
     margin-top: 50px;
     display: flex;
@@ -42,7 +43,17 @@
       }
     }
 
+    .author-details {
+      font-size: 10px;
+      color: gray;
+      font-style: italic;
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+    }
+
     .content {
+      position: relative;
       flex: 3;
       display: flex;
       flex-direction: column;

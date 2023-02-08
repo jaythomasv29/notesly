@@ -1,3 +1,6 @@
+.post {
+  color: grey;
+}
 .new-post-container {
   margin-top: 20px;
   display: flex;
@@ -9,6 +12,9 @@
     flex-direction: column;
     gap: 20px;
 
+    .error-msg {
+      color: red;
+    }
     input {
       padding: 10px;
       border: 1px solid lightgray;
@@ -34,7 +40,26 @@
     gap: 20px;
     height: 500px;
     
-    
+    .file {
+      display: flex;
+      cursor: pointer;
+      
+      span {
+        display: flex;
+        align-items: center;
+        border: 1px solid #b9e7e7;
+        background-color: #b9e7e7;
+        text-align: center;
+        color: white;
+        padding: 5px;
+        
+      }
+    }
+
+    .MuiSvgIcon-root {
+      color: grey;
+      height: 18px;
+    }
 
     .item {
       border: 1px solid lightgray;
@@ -56,10 +81,6 @@
       font-size: 20px;
     }
 
-    .file {
-      text-decoration: underline;
-      cursor: pointer;
-    }
 
     .buttons {
       display: flex;
