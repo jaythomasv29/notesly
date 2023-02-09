@@ -1,0 +1,22 @@
+.comment-container {
+
+
+  .comment-btn {
+    float: right;
+    background-color: teal;
+    width: 50px;
+    height: 30px;
+    // border-radius: 50%;
+    border: 1px solid white;
+    color: white;
+    margin-top: 10px;
+    &:hover {
+      color: gray;
+      background-color: white;
+      border: 1px solid teal;
+    }
+
+
+
+  }
+}

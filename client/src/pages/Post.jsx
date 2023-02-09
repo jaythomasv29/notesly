@@ -11,11 +11,13 @@ import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import "./Post.scss";
 import 'react-quill/dist/quill.snow.css';
+import CommentForm from "../components/Comment/CommentForm";
+import CommentSection from "../components/Comment/CommentSection";
 
 
 export const Post = () => {
 
- const modules = {toolbar: false};
+  const modules = { toolbar: false };
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
   const { id } = useParams();
@@ -26,7 +28,7 @@ export const Post = () => {
   const handleDeletePost = async (id) => {
     await axios.delete(`/posts/${id}`)
     navigate("/");
-    
+
   }
 
   console.log(post);
@@ -61,19 +63,24 @@ export const Post = () => {
 
               </div>
               <div className="circle delete">
-                
-                  <HighlightOffIcon onClick={() => handleDeletePost(post.id)}/>
-                
+
+                <HighlightOffIcon onClick={() => handleDeletePost(post.id)} />
+
               </div>
             </div>
           }
         </div>
         <h1>{post?.title}</h1>
-        <ReactQuill value={post?.desc} modules={modules} />
+        <div className="post-desc">
+          <ReactQuill value={post?.desc} modules={modules} />
 
+        </div>
+
+        {/* Comment section */}
+        <CommentSection pid={post.id} />
 
       </div>
-      <Menu category={post.category} ignoreId={post.id}/>
+      <Menu category={post.category} ignoreId={post.id} />
     </div>
   )
 }

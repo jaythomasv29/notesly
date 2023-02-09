@@ -32,7 +32,7 @@ $lightGreen: #b9e7e7;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: $lightGreen;
+        background-color: teal;
         width: 50px;
         height: 30px;
         // border-radius: 50%;
@@ -41,7 +41,7 @@ $lightGreen: #b9e7e7;
         &:hover {
           color: gray;
           background-color: white;
-          border: 1px solid $lightGreen;
+          border: 1px solid teal;
         }
       }
     }

@@ -23,6 +23,17 @@ CREATE TABLE IF NOT EXISTS posts (
   FOREIGN KEY (`uid`) REFERENCES `users`(`id`) ON DELETE CASCADE
 );
 
+DROP TABLE IF EXISTS comments;
+CREATE TABLE IF NOT EXISTS comments (
+  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `pid` INT NOT NULL,
+  `uid` INT NOT NULL,
+  `comment` VARCHAR(1000) NOT NULL,
+  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`uid`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`pid`) REFERENCES `posts`(`id`) ON DELETE CASCADE
+)
+
 -- TEST INSERT and DELETE ON CASCADE WHEN A USER IS DELETED, ALL RELATED POSTS ARE DELETED
 INSERT into users (username, email, password, img) VALUES ("james", "james@email.com", "james123", "https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/corporate-user-icon.png");
 

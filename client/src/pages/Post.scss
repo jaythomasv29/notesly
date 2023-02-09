@@ -2,10 +2,14 @@
   display: flex;
   gap: 50px;
 
-  .ql-toolbar,
-  .ql-snow,
-  .ql.editor {
-    border: none !important;
+  .post-desc {
+
+    .ql-toolbar,
+    .ql-snow,
+    .ql.editor {
+      border: none !important;
+    }
+
   }
 
   h1 {
@@ -31,6 +35,8 @@
       height: 300px;
       object-fit: cover;
     }
+
+   
   }
 
   .user {
